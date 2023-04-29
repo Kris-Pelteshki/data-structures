@@ -1,5 +1,5 @@
 export type IQueue<T = unknown> = {
-  size: number;
+  readonly size: number;
 
   enqueue(value: T): void;
   dequeue(): T | undefined;

@@ -176,7 +176,7 @@ export class LinkedList<T = unknown> implements ILinkedList<T>, Iterable<T> {
   }
 
   toArray() {
-    return [...this];
+    return Array.from(this);
   }
 
   *[Symbol.iterator]() {

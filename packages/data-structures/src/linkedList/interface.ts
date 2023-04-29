@@ -1,10 +1,12 @@
 export type IListNode<T> = {
   value: T;
-  next: IListNode<T> | null;
   prev: IListNode<T> | null;
+  next: IListNode<T> | null;
 };
 
 export type ILinkedList<T> = {
+  readonly size: number;
+
   isEmpty(): boolean;
   peekFirst(): T | undefined;
   peekLast(): T | undefined;

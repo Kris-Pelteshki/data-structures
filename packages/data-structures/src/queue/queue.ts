@@ -4,11 +4,13 @@ import { IQueue } from "./interface";
 export class Queue<T = unknown> implements IQueue<T>, Iterable<T> {
   private list: LinkedList<T>;
 
-  constructor(values?: T[]) {
+  constructor(values?: Iterable<T>) {
     this.list = new LinkedList();
 
     if (values) {
-      values.forEach((value) => this.enqueue(value));
+      for (const value of values) {
+        this.enqueue(value);
+      }
     }
   }
 
