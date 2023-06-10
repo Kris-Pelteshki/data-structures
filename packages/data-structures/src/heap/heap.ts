@@ -1,11 +1,11 @@
 import { IHeap } from "./interface";
 import { minCompare, Comparator } from "./comparators";
 
-export class BinaryHeap<T> implements IHeap<T>, Iterable<T> {
+export class Heap<T> implements IHeap<T>, Iterable<T> {
   private heap: T[];
   private readonly comparator: Comparator<T>;
 
-  constructor(elems?: T[], comparator?: Comparator<T>) {
+  constructor(elems?: Iterable<T>, comparator?: Comparator<T>) {
     this.heap = elems ? [...elems] : [];
     this.comparator = comparator || minCompare;
 
@@ -36,33 +36,34 @@ export class BinaryHeap<T> implements IHeap<T>, Iterable<T> {
     return this.heap[0];
   }
 
+  indexOf(elem: T) {
+    for (let i = 0; i < this.size; i++) {
+      if (this.heap[i] === elem) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  contains(elem: T) {
+    return this.indexOf(elem) !== -1;
+  }
+
   add(elem: T) {
     this.heap.push(elem);
     this.swim(this.indexOfLastElem);
   }
 
-  poll(amount: number = 1) {
+  poll() {
     return this.removeAt(0);
   }
 
   pollAll() {
-    const result = [];
-
-    while (!this.isEmpty()) {
-      result.push(this.poll() as T);
+    const result = new Array<T>(this.size);
+    for (let i = 0; i < result.length; i++) {
+      result[i] = this.poll() as T;
     }
-
     return result;
-  }
-
-  remove(elem: T) {
-    const index = this.indexOf(elem);
-    if (index === -1) {
-      return false;
-    }
-
-    this.removeAt(index);
-    return true;
   }
 
   removeAt(i: number) {
@@ -89,17 +90,14 @@ export class BinaryHeap<T> implements IHeap<T>, Iterable<T> {
     return removedData;
   }
 
-  indexOf(elem: T) {
-    for (let i = 0; i < this.size; i++) {
-      if (this.heap[i] === elem) {
-        return i;
-      }
+  remove(elem: T) {
+    const index = this.indexOf(elem);
+    if (index === -1) {
+      return false;
     }
-    return -1;
-  }
 
-  contains(elem: T) {
-    return this.indexOf(elem) !== -1;
+    this.removeAt(index);
+    return true;
   }
 
   *[Symbol.iterator]() {
@@ -108,18 +106,28 @@ export class BinaryHeap<T> implements IHeap<T>, Iterable<T> {
     }
   }
 
+  private get indexOfLastElem() {
+    return this.size - 1;
+  }
+
   private less(i: number, j: number): boolean {
     return this.comparator(this.heap[i] as T, this.heap[j] as T) <= 0;
   }
 
-  private swim(k: number): void {
-    let parent = Math.floor((k - 1) / 2);
+  private swap(i: number, j: number): void {
+    const elem = this.heap[i] as T;
+    this.heap[i] = this.heap[j] as T;
+    this.heap[j] = elem;
+  }
 
-    while (k > 0 && this.less(k, parent)) {
-      this.swap(parent, k);
-      k = parent;
+  private swim(idx: number): void {
+    let parentIdx = Math.floor((idx - 1) / 2);
 
-      parent = Math.floor((k - 1) / 2);
+    while (idx > 0 && this.less(idx, parentIdx)) {
+      this.swap(parentIdx, idx);
+      idx = parentIdx;
+
+      parentIdx = Math.floor((idx - 1) / 2);
     }
   }
 
@@ -142,15 +150,5 @@ export class BinaryHeap<T> implements IHeap<T>, Iterable<T> {
       this.swap(smallest, k);
       k = smallest;
     }
-  }
-
-  private swap(i: number, j: number): void {
-    const elem = this.heap[i] as T;
-    this.heap[i] = this.heap[j] as T;
-    this.heap[j] = elem;
-  }
-
-  private get indexOfLastElem() {
-    return this.size - 1;
   }
 }

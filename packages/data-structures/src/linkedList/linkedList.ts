@@ -12,7 +12,7 @@ class Node<T> implements IListNode<T> {
   }
 }
 
-export class LinkedList<T = unknown> implements ILinkedList<T>, Iterable<T> {
+export class LinkedList<T> implements ILinkedList<T>, Iterable<T> {
   private head: Node<T> | null = null;
   private tail: Node<T> | null = null;
   private _size = 0;
