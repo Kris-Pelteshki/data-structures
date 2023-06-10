@@ -4,14 +4,14 @@ import { BinaryHeap } from "./binaryHeap";
  * @name PriorityQueue
  * @description
  * A priority queue is a data structure that holds elements which have a priority assigned to them.
- * They are typically implemented using a heap.
+ * In this implementation, higher priority values are given a higher priority.
  *
  * @example
  * const queue = new PriorityQueue<number>();
  *
- * queue.add(1, 3);
+ * queue.add(1, 1);
  * queue.add(2, 2);
- * queue.add(3, 1);
+ * queue.add(3, 3);
  *
  * queue.poll(); // 3
  * queue.poll(); // 2
@@ -46,7 +46,7 @@ export class PriorityQueue<T> {
     if (this.priorities.get(a) === this.priorities.get(b)) {
       return 0;
     }
-    return (this.priorities.get(a) as number) <
+    return (this.priorities.get(a) as number) >
       (this.priorities.get(b) as number)
       ? -1
       : 1;

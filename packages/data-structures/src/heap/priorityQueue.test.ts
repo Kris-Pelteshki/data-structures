@@ -13,18 +13,18 @@ describe("PriorityQueue", () => {
   });
 
   it("adds elements with priority", () => {
-    queue.add(1, 10);
     queue.add(2, 2);
+    queue.add(1, 10);
     queue.add(3, 1);
     queue.add(4, 5);
 
     expect(queue.size).toBe(4);
     expect(queue.isEmpty()).toBe(false);
-    expect(queue.peek()).toBe(3);
-    expect(queue.poll()).toBe(3);
-    expect(queue.poll()).toBe(2);
-    expect(queue.poll()).toBe(4);
+    expect(queue.peek()).toBe(1);
     expect(queue.poll()).toBe(1);
+    expect(queue.poll()).toBe(4);
+    expect(queue.poll()).toBe(2);
+    expect(queue.poll()).toBe(3);
   });
 
   it("removes elements", () => {
@@ -36,7 +36,7 @@ describe("PriorityQueue", () => {
 
     expect(queue.size).toBe(2);
     expect(queue.contains(2)).toBe(false);
-    expect(queue.peek()).toBe(3);
+    expect(queue.peek()).toBe(1);
   });
 
   it("changes priority of elements", () => {
@@ -47,10 +47,10 @@ describe("PriorityQueue", () => {
     queue.changePriority(1, 4);
 
     expect(queue.size).toBe(3);
-    expect(queue.peek()).toBe(2);
-    expect(queue.poll()).toBe(2);
-    expect(queue.poll()).toBe(3);
+    expect(queue.peek()).toBe(1);
     expect(queue.poll()).toBe(1);
+    expect(queue.poll()).toBe(3);
+    expect(queue.poll()).toBe(2);
   });
 
   it("polls elements in priority order", () => {
@@ -61,11 +61,11 @@ describe("PriorityQueue", () => {
     queue.add(5, 9);
 
     expect(queue.size).toBe(5);
-    expect(queue.poll()).toBe(2);
-    expect(queue.poll()).toBe(3);
-    expect(queue.poll()).toBe(5);
-    expect(queue.poll()).toBe(1);
     expect(queue.poll()).toBe(4);
+    expect(queue.poll()).toBe(1);
+    expect(queue.poll()).toBe(5);
+    expect(queue.poll()).toBe(3);
+    expect(queue.poll()).toBe(2);
   });
 
   it("clears the queue", () => {
@@ -98,10 +98,10 @@ describe("PriorityQueue with objects", () => {
 
     expect(queue.size).toBe(3);
     expect(queue.isEmpty()).toBe(false);
-    expect(queue.peek()).toBe(obj_1);
-    expect(queue.poll()).toBe(obj_1);
-    expect(queue.poll()).toBe(obj_3);
+    expect(queue.peek()).toBe(obj_2);
     expect(queue.poll()).toBe(obj_2);
+    expect(queue.poll()).toBe(obj_3);
+    expect(queue.poll()).toBe(obj_1);
     expect(queue.isEmpty()).toBe(true);
   });
 });
