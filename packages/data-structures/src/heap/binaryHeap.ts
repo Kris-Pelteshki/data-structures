@@ -1,7 +1,7 @@
 import { IHeap } from "./interface";
 import { minCompare, Comparator } from "./comparators";
 
-export class Heap<T> implements IHeap<T>, Iterable<T> {
+export class BinaryHeap<T> implements IHeap<T>, Iterable<T> {
   private heap: T[];
   private readonly comparator: Comparator<T>;
 

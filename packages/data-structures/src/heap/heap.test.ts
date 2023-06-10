@@ -1,11 +1,11 @@
 import { Queue } from "../queue";
-import { Heap } from "./index";
+import { BinaryHeap } from "./index";
 
 describe("Heap", () => {
-  let heap: Heap<number>;
+  let heap: BinaryHeap<number>;
 
   beforeEach(() => {
-    heap = new Heap<number>();
+    heap = new BinaryHeap<number>();
   });
 
   it("starts empty", () => {
@@ -14,7 +14,7 @@ describe("Heap", () => {
   });
 
   it("Can create a heap from an iterable", () => {
-    const heapFromIterable = new Heap(new Queue([5, 3, 2, 10]));
+    const heapFromIterable = new BinaryHeap(new Queue([5, 3, 2, 10]));
 
     expect(heapFromIterable.size).toBe(4);
     expect(heapFromIterable.isEmpty()).toBe(false);

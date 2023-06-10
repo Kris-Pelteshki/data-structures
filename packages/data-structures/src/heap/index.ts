@@ -1,12 +1,12 @@
-import { Heap } from "./heap";
+import { BinaryHeap } from "./binaryHeap";
 import { Comparator, maxCompare } from "./comparators";
 
-const MinHeap = Heap;
+const MinHeap = BinaryHeap;
 
-class MaxHeap<T> extends Heap<T> {
+class MaxHeap<T> extends BinaryHeap<T> {
   constructor(elems?: T[], comparator?: Comparator<T>) {
     super(elems, comparator || maxCompare);
   }
 }
 
-export { Heap, MinHeap, MaxHeap };
+export { BinaryHeap, MinHeap, MaxHeap };
