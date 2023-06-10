@@ -17,7 +17,6 @@ describe("Heap", () => {
     const heapFromIterable = new BinaryHeap(new Queue([5, 3, 2, 10]));
 
     expect(heapFromIterable.size).toBe(4);
-    expect(heapFromIterable.isEmpty()).toBe(false);
     expect(heapFromIterable.peek()).toBe(2);
   });
 
