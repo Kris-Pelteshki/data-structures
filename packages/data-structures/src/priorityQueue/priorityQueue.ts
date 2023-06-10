@@ -1,4 +1,4 @@
-import { BinaryHeap } from "./binaryHeap";
+import { BinaryHeap } from "../heap";
 
 /**
  * @name PriorityQueue
