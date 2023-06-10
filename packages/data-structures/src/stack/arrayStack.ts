@@ -1,6 +1,6 @@
 import { IStack } from "./interface";
 
-export class ArrayStack<T = unknown> implements IStack<T>, Iterable<T> {
+export class ArrayStack<T> implements IStack<T>, Iterable<T> {
   private stack: T[] = [];
 
   get size() {
@@ -27,7 +27,7 @@ export class ArrayStack<T = unknown> implements IStack<T>, Iterable<T> {
     this.stack = [];
   }
 
-  [Symbol.iterator]() {
+  [Symbol.iterator](): Iterator<T> {
     return this.stack[Symbol.iterator]();
   }
 }

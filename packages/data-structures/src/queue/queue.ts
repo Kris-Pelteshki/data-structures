@@ -38,7 +38,7 @@ export class Queue<T> implements IQueue<T>, Iterable<T> {
     this.list.clear();
   }
 
-  [Symbol.iterator]() {
+  [Symbol.iterator](): Iterator<T> {
     return this.list[Symbol.iterator]();
   }
 }

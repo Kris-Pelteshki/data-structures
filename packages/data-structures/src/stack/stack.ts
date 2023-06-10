@@ -28,11 +28,8 @@ export class Stack<T = unknown> implements IStack<T>, Iterable<T> {
     this.list.clear();
   }
 
-  /**
-   * O(n)
-   * Iterates over the stack from top to bottom.
-   */
-  [Symbol.iterator]() {
+  /**  Iterates over the stack from top to bottom. */
+  [Symbol.iterator](): Iterator<T> {
     return this.list.toArray().reverse()[Symbol.iterator]();
   }
 }

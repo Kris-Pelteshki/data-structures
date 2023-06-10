@@ -100,7 +100,7 @@ export class Heap<T> implements IHeap<T>, Iterable<T> {
     return true;
   }
 
-  *[Symbol.iterator]() {
+  *[Symbol.iterator](): Iterator<T> {
     for (let i = 0; i < this.size; i++) {
       yield this.heap[i] as T;
     }
