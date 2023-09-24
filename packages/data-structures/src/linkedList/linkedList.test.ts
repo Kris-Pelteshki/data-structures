@@ -1,10 +1,10 @@
-import { LinkedList } from "./linkedList";
+import { DoublyLinkedList } from "./DoublyLinkedList";
 
 describe("LinkedList", () => {
-  let list: LinkedList<number>;
+  let list: DoublyLinkedList<number>;
 
   beforeEach(() => {
-    list = new LinkedList<number>();
+    list = new DoublyLinkedList<number>();
   });
 
   describe("addFirst", () => {

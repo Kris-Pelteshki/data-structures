@@ -1,2 +1,8 @@
-export { LinkedList } from "./linkedList";
-export { ILinkedList, IListNode } from "./interface";
+export { LinkedList } from "./LinkedList";
+export { DoublyLinkedList } from "./DoublyLinkedList";
+export {
+  ILinkedList,
+  IDoublyLinkedList,
+  IListNode,
+  IDoublyLinkedListNode,
+} from "./interface";

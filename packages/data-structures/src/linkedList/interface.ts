@@ -1,10 +1,28 @@
 export type IListNode<T> = {
   value: T;
-  prev: IListNode<T> | null;
   next: IListNode<T> | null;
 };
 
+export type IDoublyLinkedListNode<T> = {
+  value: T;
+  prev: IDoublyLinkedListNode<T> | null;
+  next: IDoublyLinkedListNode<T> | null;
+};
+
 export type ILinkedList<T> = {
+  readonly size: number;
+
+  isEmpty(): boolean;
+  peekFirst(): T | undefined;
+  peekLast(): T | undefined;
+  addFirst(value: T): void;
+  addLast(value: T): void;
+  removeFirst(): T | undefined;
+  clear(): void;
+  toArray(): T[];
+};
+
+export type IDoublyLinkedList<T> = {
   readonly size: number;
 
   isEmpty(): boolean;

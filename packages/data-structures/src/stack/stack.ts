@@ -9,15 +9,15 @@ export class Stack<T = unknown> implements IStack<T>, Iterable<T> {
   }
 
   push(item: T) {
-    this.list.addLast(item);
+    this.list.addFirst(item);
   }
 
   pop() {
-    return this.list.removeLast();
+    return this.list.removeFirst();
   }
 
   peek() {
-    return this.list.peekLast();
+    return this.list.peekFirst();
   }
 
   isEmpty() {
@@ -28,8 +28,7 @@ export class Stack<T = unknown> implements IStack<T>, Iterable<T> {
     this.list.clear();
   }
 
-  /**  Iterates over the stack from top to bottom. */
   [Symbol.iterator](): Iterator<T> {
-    return this.list.toArray().reverse()[Symbol.iterator]();
+    return this.list.toArray()[Symbol.iterator]();
   }
 }
