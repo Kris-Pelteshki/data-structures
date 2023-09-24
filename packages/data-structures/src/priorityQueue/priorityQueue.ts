@@ -28,9 +28,9 @@ import { BinaryHeap } from "../heap";
  * queue.poll(); // { id: "b", value: "B", data: [4, 5, 6] }
  * queue.poll(); // { id: "c", value: "C", data: [7, 8, 9] }
  *
- * | Peek | Poll | Insertion |
- * | ---- | ---- | --------- |
- * | O(1) | O(log n) | O(log n) |
+ * | Peek | Poll     | Insertion |
+ * | ---- | -------- | --------- |
+ * | O(1) | O(log n) | O(log n)  |
  *
  */
 export class PriorityQueue<T> {
